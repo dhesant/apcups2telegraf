@@ -8,7 +8,7 @@ status = {}
 
 # Key defintions
 ignore = ['apc', 'cable', 'driver', 'upsmode', 'starttime', 'end apc']
-tags = ['hostname', 'upsname', 'serialno', 'status']
+tags = ['hostname', 'upsname', 'serialno']
 date_parse = ['date', 'battdate', 'xonbatt', 'xoffbatt']
 force_text = ['version', 'serialno', 'firmware', 'statflag']
 
@@ -19,11 +19,13 @@ for line in res.split("\n"):
     key = key.strip().lower()
     val = val.strip()
     if key not in ignore:
-        if val[0].isdigit() and key not in force_text:
-            if key in date_parse:
+        if key in date_parse:
+            if val[0].isdigit():
                 status[key] = dparser.parse(val)
             else:
-                status[key] = float(val)
+                status[key] = 0
+        elif val[0].isdigit() and key not in force_text:
+            status[key] = float(val)
         else:
             status[key] = val
 

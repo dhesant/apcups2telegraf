@@ -20,13 +20,14 @@ for line in res.split("\n"):
     val = val.strip()
     if key not in ignore:
         if key in date_parse:
-            if val[0].isdigit():
-                status[key] = dparser.parse(val)
-            else:
-                status[key] = 0
+            if not val[0].isdigit():
+                continue
+            status[key] = dparser.parse(val)
         elif val[0].isdigit() and key not in force_text:
             status[key] = float(val)
         else:
+            if key == 'alarmdel':
+                continue
             status[key] = val
 
 # Generate InfluxDB Line Protocol String        

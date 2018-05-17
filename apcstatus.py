@@ -9,7 +9,7 @@ status = {}
 # Key defintions
 ignore = ['apc', 'cable', 'driver', 'upsmode', 'starttime', 'end apc']
 tags = ['hostname', 'upsname', 'serialno']
-date_parse = ['date', 'battdate', 'xonbatt', 'xoffbatt']
+date_parse = ['date', 'battdate', 'xonbatt', 'xoffbatt', 'laststest']
 force_text = ['version', 'serialno', 'firmware', 'statflag']
 
 # Parse output into holding variable

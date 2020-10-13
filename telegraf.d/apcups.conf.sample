@@ -1,0 +1,9 @@
+[[inputs.exec]]
+  ## Commands array
+  commands = ["python3", "-m" "apcups2telegraf.apcstatus"]
+
+  ## Timeout for each command to complete.
+  timeout = "5s"
+  interval = "5m"
+
+  data_format = "influx"
